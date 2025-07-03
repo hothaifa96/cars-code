@@ -66,7 +66,7 @@ check_api_health() {
     
     response=$(curl -s -w "HTTPSTATUS:%{http_code}" "$BASE_URL/cars")
     http_code=$(echo $response | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
-    
+    echo "$http_code"
     if [ "$http_code" -eq 200 ]; then
         print_success "API is running"
         return 0
