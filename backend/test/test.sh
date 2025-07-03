@@ -64,7 +64,7 @@ test_api() {
 check_api_health() {
     print_test "CHECKING API HEALTH"
     
-    response=$(curl -s -w "HTTPSTATUS:%{http_code}" "$BASE_URL/")
+    response=$(curl -s -w "HTTPSTATUS:%{http_code}" "$BASE_URL/cars")
     http_code=$(echo $response | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
     
     if [ "$http_code" -eq 200 ]; then
