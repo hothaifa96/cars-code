@@ -1,0 +1,20 @@
+version : '3.8'
+
+services:
+  db:
+    image: postgres:14
+    container_name: db_contaner
+    environment:
+      POSTGRES_DB: car_dealership
+      POSTGRES_USER: hodi
+      POSTGRES_PASSWPRD: hodi
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - data:/var/lib/postgresql/data
+    networks:
+      - cars_network
+  backend:
+   build: ./backend
+   
